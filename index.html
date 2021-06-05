@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>(Air Quality and UV Index) Outdoor Tracker</title>
+  </head>
+  <body>
+    <h1>Welcome to the Outdoor Tracker!</h1>
+    <form id="dataForm">
+      <label>Type in your location and press enter: </label>
+      <input type="text" name="location" id="location" onchange="getOutdoorData()">
+      <br>
+      <label>Latitude: </label>
+      <input type="text" name="latitude" id="latitude">
+      <br>
+      <label>Longitude: </label>
+      <input type = "text" name="longitude" id="longitude">
+      <br>
+      <label>Air Quality Index: </label>
+      <input type = "text" name="airindex" id="airindex">
+      <br>
+      <label>UV Index: </label>
+      <input type = "text" name="uvindex" id="uvindex">
+      <!--<input type = "button" onclick = "clear" value="Clear">-->
+    </form>
+    <br>
+    <div id="outdoordata">
+        <div id="display_airdata"></div>
+        <div id="display_uvdata"></div>
+    </div>
+
+    <script>
+      function getOutdoorData()
+      {
+        /** Get Location Coordinates **/
+        var address = document.getElementById('location').value;
+        var url = "https://geocoder.ls.hereapi.com/6.2/geocode.json?searchtext=" + address + "&gen=9&apiKey=C6PA6_-B3NOvoxjsHLoiATsWBq5ux9LhhR57cEA_z2E";
+        var xmlHttp = new XMLHttpRequest()
+        xmlHttp.open("GET", url, false);
+        xmlHttp.send(null);
+        var json = JSON.parse(xmlHttp.responseText);
+        console.log(json)
+
+        /** Display Location Coordinates to user **/
+        document.getElementById('latitude').value = json.Response.View[0].Result[0].Location.DisplayPosition.Latitude;
+        document.getElementById('longitude').value = json.Response.View[0].Result[0].Location.DisplayPosition.Longitude;
+
+        var lat = json.Response.View[0].Result[0].Location.DisplayPosition.Latitude;
+        var long = json.Response.View[0].Result[0].Location.DisplayPosition.Longitude;
+        console.log(lat)
+        console.log(long)
+
+        /** Get Air Quality Index based on coordinates **/
+        var url2 = "http://api.openweathermap.org/data/2.5/air_pollution?lat=" + lat + "&lon=" + long + "&appid=a51d2ad1ebf1572d6079cdd2254886e1";
+        var xmlHttp2 = new XMLHttpRequest()
+        xmlHttp2.open("GET", url2, false);
+        xmlHttp2.send(null);
+        var json2 = JSON.parse(xmlHttp2.responseText);
+        console.log(json2.list[0].main.aqi)
+        console.log(json2)
+
+        /** Display Air Quality Index and Output message to user on how air quality is **/
+        document.getElementById('airindex').value = json2.list[0].main.aqi
+
+        var air_quality_index = json2.list[0].main.aqi
+        var air_output = document.getElementById('display_airdata');
+        /*output.innerHTML = "Air quality index is " + json2.list[0].main.aqi*/
+        if (air_quality_index == 1){
+          air_output.innerHTML = "Air quality is EXCELLENT"}
+        if (air_quality_index == 2){
+          air_output.innerHTML = "Air quality is FAIR"}
+        if (air_quality_index == 3){
+          air_output.innerHTML = "Air quality is MODERATE"}
+        if (air_quality_index == 4){
+          air_output.innerHTML = "Air quality is POOR"}
+        if (air_quality_index == 5){
+          air_output.innerHTML = "Air quality is VERY POOR"}
+
+        /** Get UV Index Data **/
+        var url3 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&appid=a51d2ad1ebf1572d6079cdd2254886e1";
+        var xmlHttp3 = new XMLHttpRequest()
+        xmlHttp3.open("GET", url3, false);
+        xmlHttp3.send(null);
+        var json3 = JSON.parse(xmlHttp3.responseText);
+        console.log(json3.current.uvi)
+
+        /** Display UV Index and Output message to user on how UV index is **/
+        var uv_index = json3.current.uvi
+        var uv_output = document.getElementById('display_uvdata');
+        document.getElementById('uvindex').value = uv_index;
+
+        if (uv_index >= 0 && uv_index <= 2){
+          uv_output.innerHTML = "UV Index: GREEN"}
+        if (uv_index >= 3 && uv_index <= 5){
+          uv_output.innerHTML = "UV Index: YELLOW"}
+        if (uv_index >= 6 && uv_index <= 7){
+          uv_output.innerHTML = "UV Index: ORANGE"}
+        if (uv_index >= 8 && uv_index <= 10){
+          uv_output.innerHTML = "UV Index: RED"}
+        if (uv_index >= 11){
+          uv_output.innerHTML = "Uv Index: VIOLET"}
+
+        /* Pollen Index and Bug Report  */
+
+
+
+      }
+
+      function clear(){
+        document.getElementById("dataForm").reset();
+        var output = document.getElementById('display');
+        output.innerHTML = "";
+      }
+    </script>
+  </body>
+</html>
