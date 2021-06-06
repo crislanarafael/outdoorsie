@@ -41,6 +41,10 @@ body{
 
 }
 
+#user_alerts{
+  padding-top: 20px;
+}
+
 .weatherdata {
   font-size: 20px;
   color: white;
