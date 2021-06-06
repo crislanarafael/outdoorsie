@@ -2,35 +2,41 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Outdoorsie: An Air Quality and UV Index Tracker</title>
+    <title>(Air Quality and UV Index) Outdoorsy</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="/favicon.ico"> 
   </head>
   <body>
-    <h1>Welcome to the Outdoorsie!</h1>
-    <form id="dataForm">
-      <label>Type in your location and press enter: </label>
-      <input type="text" name="location" id="location" onchange="getOutdoorData()">
-      <br>
-      <label>Latitude: </label>
-      <input type="text" name="latitude" id="latitude">
-      <br>
-      <label>Longitude: </label>
-      <input type = "text" name="longitude" id="longitude">
-      <br>
-      <label>Air Quality Index: </label>
-      <input type = "text" name="airindex" id="airindex">
-      <br>
-      <label>UV Index: </label>
-      <input type = "text" name="uvindex" id="uvindex">
-      <!--<input type = "button" onclick = "clear" value="Clear">-->
-    </form>
-    <br>
-    <div id="outdoordata">
-        <div id="display_airdata"></div>
-        <div id="display_uvdata"></div>
+    <div class = "banner-area">
+      <div class="content-area">
+        <div class = "content">
+          <h1>Welcome to Outdoorsie</h1>
+          <div class = "weatherdata">
+            <form id="dataForm">
+              <label>Type in your location and press enter: </label>
+              <input type="text" name="location" id="location" onchange="getOutdoorData()">
+              <br>
+              <label>Latitude: </label>
+              <input type="text" name="latitude" id="latitude">
+              <br>
+              <label>Longitude: </label>
+              <input type = "text" name="longitude" id="longitude">
+              <br>
+              <label>Air Quality Index: </label>
+              <input type = "text" name="airindex" id="airindex">
+              <br>
+              <label>UV Index: </label>
+              <input type = "text" name="uvindex" id="uvindex">
+              <!--<input type = "button" onclick = "clear" value="Clear">-->
+            </form>
+            <br>
+            <div id="outdoordata">
+              <div id="display_airdata"></div>
+              <div id="display_uvdata"></div>
+            </div>
+            </div>
+          </div>
+        </div>
     </div>
-
     <script>
       function getOutdoorData()
       {
@@ -53,7 +59,7 @@
         console.log(long)
 
         /** Get Air Quality Index based on coordinates **/
-        var url2 = "https://api.openweathermap.org/data/2.5/air_pollution?lat=" + lat + "&lon=" + long + "&appid=a51d2ad1ebf1572d6079cdd2254886e1";
+        var url2 = "http://api.openweathermap.org/data/2.5/air_pollution?lat=" + lat + "&lon=" + long + "&appid=a51d2ad1ebf1572d6079cdd2254886e1";
         var xmlHttp2 = new XMLHttpRequest()
         xmlHttp2.open("GET", url2, false);
         xmlHttp2.send(null);
@@ -116,3 +122,4 @@
     </script>
   </body>
 </html>
+
