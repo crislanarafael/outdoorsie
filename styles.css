@@ -13,6 +13,43 @@ html {
   box-sizing: border-box;
 }
 
+nav{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-menu{
+  list-style-type: none;
+}
+
+.nav-menu li{
+  display:inline-block;
+  padding: 20px 10px;
+}
+
+.nav-menu a{
+  color: black;
+  text-decoration: none;
+}
+
+.nav-menu a:hover{
+  color: green;
+}
+
+#main-logo{
+  height:65px;
+  widght:65px;
+}
+
+.menu-line{
+  color: black;
+  width: 20px;
+  height: 5px;
+  margin-bottom: 5px;
+}
+
+
 /*form{
   font-size: 20px;
   background: transparent !important;
@@ -39,11 +76,6 @@ body{
 .content{
   text-align:center;
 
-}
-
-#user_alerts{
-  padding-top: 20px;
-  padding-bottom:20px;
 }
 
 .weatherdata {
@@ -74,5 +106,4 @@ body{
     font-size:150px;
   }
 }
-
 
