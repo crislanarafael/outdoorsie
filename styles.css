@@ -5,3 +5,51 @@ html {
   -o-background-size: cover;
   background-size: cover;
 }
+
+
+*{
+  padding:0;
+  magin:0;
+  box-sizing: border-box;
+}
+
+/*form{
+  font-size: 20px;
+  background: transparent !important;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}*/
+
+body{
+  font-family: helvetica;
+}
+
+.banner-area{
+  width:100%;
+  height:100vh;
+}
+
+.content-area{
+  height:100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content{
+  text-align:center;
+
+}
+
+.weatherdata {
+  font-size: 20px;
+  color: white;
+  background: rgba(0,0,0,0.3);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 20px;
+}
+
+.content h1{
+  font-size:80px;
+}
