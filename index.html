@@ -59,7 +59,7 @@
         console.log(long)
 
         /** Get Air Quality Index based on coordinates **/
-        var url2 = "http://api.openweathermap.org/data/2.5/air_pollution?lat=" + lat + "&lon=" + long + "&appid=a51d2ad1ebf1572d6079cdd2254886e1";
+        var url2 = "https://api.openweathermap.org/data/2.5/air_pollution?lat=" + lat + "&lon=" + long + "&appid=a51d2ad1ebf1572d6079cdd2254886e1";
         var xmlHttp2 = new XMLHttpRequest()
         xmlHttp2.open("GET", url2, false);
         xmlHttp2.send(null);
