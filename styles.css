@@ -91,6 +91,11 @@ body{
   font-size:80px;
 }
 
+p{
+  padding-left:5px;
+  padding-right:5px;
+}
+
 @media only screen and (-webkit-min-device-pixel-ratio: 3) {
 
   .weatherdata {
