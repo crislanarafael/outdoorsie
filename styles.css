@@ -53,3 +53,21 @@ body{
 .content h1{
   font-size:80px;
 }
+
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+
+  .weatherdata {
+    font-size: 50px;
+    color: white;
+    background: rgba(0,0,0,0.3);
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-radius: 40px;
+  }
+
+  .content h1{
+    font-size:150px;
+  }
+}
+
+
