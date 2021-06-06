@@ -99,17 +99,27 @@
         document.getElementById('uvindex').value = uv_index;
 
         if (uv_index >= 0 && uv_index <= 2){
-          uv_output.innerHTML = "UV Index: GREEN"}
+          var green_index = "GREEN";
+          var green_index_display = green_index.fontcolor("#98FF98");
+          uv_output.innerHTML = "Current UV Index is " + green_index_display}
         if (uv_index >= 3 && uv_index <= 5){
-          uv_output.innerHTML = "UV Index: YELLOW"}
+          var yellow_index = "YELLOW";
+          var yellow_index_display = yellow_index.fontcolor("#FFDB58");
+          uv_output.innerHTML = "Current UV Index is " + yellow_index_display}
         if (uv_index >= 6 && uv_index <= 7){
-          uv_output.innerHTML = "UV Index: ORANGE"}
+          var orange_index = "ORANGE";
+          var orange_index_display = orange_index.fontcolor("#FF8040");
+          uv_output.innerHTML = "Current UV Index is " + orange_index_display}
         if (uv_index >= 8 && uv_index <= 10){
-          uv_output.innerHTML = "UV Index: RED"}
+          var red_index = "RED";
+          var red_index_display = red_index.fontcolor("#E55451");
+          uv_output.innerHTML = "Current UV Index is RED"}
         if (uv_index >= 11){
-          uv_output.innerHTML = "Uv Index: VIOLET"}
+          var purple_index = "PURPLE";
+          var purple_index_display = purple_index.fontcolor("#C5908E");
+          uv_output.innerHTML = "Current Uv Index is VIOLET"}
 
-        /* Pollen Index and Bug Report  */
+        /* Pollen Index and Bug Report to be added at a later date */
 
 
 
